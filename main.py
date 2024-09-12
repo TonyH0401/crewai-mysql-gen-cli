@@ -1,4 +1,4 @@
-from configs.models import test_demo
+# from configs.models import test_demo
 # from mysql_db_schema import schema
 # from langchain_groq import ChatGroq
 # from crewai import Agent, Task, Crew, Process
@@ -78,7 +78,32 @@ from configs.models import test_demo
 # print(">>> Raw query:\n", generate_task.output.raw_output)
 # print("\n>>> Query and Explaination:\n", output)
 
+from crewai import Crew, Process
+from configs.agents import PoemGenerateAgent
+from configs.tasks import PoemGenerateTasks
+
+# user_specs = "Generate a short classic English poem about love based on the season Winter."
+user_specs = "Generate a haiku poem about love based on the season Spring. In haiku poem format."
+
+# Initialize Agents and Tasks
+agents = PoemGenerateAgent()
+tasks = PoemGenerateTasks()
+# Create Agents
+poem_generate_agent = agents.poem_generate_agent()
+# Create Tasks
+poem_generate_task = tasks.poem_generate_task(poem_generate_agent, user_specs)
+# Create Crew for poem generation
+poem_crew = Crew(
+    agents=[poem_generate_agent],
+    tasks=[poem_generate_task],
+    verbose=True,
+    process=Process.sequential
+)
+
 if __name__ == "__main__":
     print(">>> Program starts!")
+    poem = poem_crew.kickoff()
+    print(">>> Answer:")
+    print(poem)
     # # Define user question, must be precise
     # question = "List popular Electronics products"
