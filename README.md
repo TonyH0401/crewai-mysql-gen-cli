@@ -1,6 +1,7 @@
 CrewAI is built upon LangChain, so CrewAI can use LangChain functions and tools (some of it).
+
 This a MySQL Generator using CrewAI and Groq, it is also a CrewAI guide for beginner.
-    - https://docs.crewai.com/.
+- https://docs.crewai.com/.
 
 There are 4 things in CrewAI that are important: Agent, Task, Process and Crew. However, only Agent, Task and Process are the most important.
 And from those 3 only Task is the most important
