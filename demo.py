@@ -81,7 +81,12 @@ crew = Crew(
 )
 output = crew.kickoff()
 
+# Main
 print(">>> Output:")
 print(output)
+print(">>> Raw Task 1:")
+print(joke_generate_task.output.raw_output)
+testing = evaluate_task.output
+print(">>> Raw Task 2:")
+print(testing.raw)
 
-# print(">>> Raw query:\n", generate_task.output.raw_output)
