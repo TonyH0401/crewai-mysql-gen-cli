@@ -67,9 +67,10 @@ evaluate_task = Task(
         Three paragraphs seperated.
         The first paragraph display the original performance.
         The second paragraph is the explanation of the performance.
-        The second paragraph is the score given for the performance with criteria."""),
+        The third paragraph is the score given for the performance with criteria."""),
     agent=audience_agent,
-    # context=[generate_task]
+    # Don't really need 'context' because it's sequential by default
+    context=[joke_generate_task]
 )
 
 # Define comedian crew
@@ -84,9 +85,5 @@ output = crew.kickoff()
 # Main
 print(">>> Output:")
 print(output)
-print(">>> Raw Task 1:")
-print(joke_generate_task.output.raw_output)
-testing = evaluate_task.output
-print(">>> Raw Task 2:")
-print(testing.raw)
-
+# print(">>> Raw Task 1:")
+# print(joke_generate_task.output.raw_output)
