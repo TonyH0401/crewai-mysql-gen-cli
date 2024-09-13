@@ -32,3 +32,7 @@ In the CrewAI docs, these are the sections you need to view:
         - Sequential Process Overview > Implementing Sequential Process 
         - Hierarchical Process Overview
     Examples: Look over some example code and you will see some a crew that have multiple task but fewer agent
+
+TO-DO:
+- Add few-shot examples
+- Request the result to be only in query, no code block markdown
