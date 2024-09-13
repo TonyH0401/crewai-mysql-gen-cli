@@ -29,6 +29,8 @@ if __name__ == "__main__":
     output = mysql_crew.kickoff()
     print(">>> Answer:")
     print(output)
+    print(">>> Raw:")
+    print(mysql_generate_task.output.raw_output)
 
 # # Define crew
 # crew = Crew(
