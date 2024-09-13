@@ -29,16 +29,3 @@ if __name__ == "__main__":
     output = mysql_crew.kickoff()
     print(">>> Answer:")
     print(output)
-
-# # Define crew
-# crew = Crew(
-#     agents=[generate_agent, extract_agent],
-#     tasks=[generate_task, extract_task],
-#     verbose=2,
-#     process=Process.sequential
-# )
-
-# # Kickoff the process and return the result
-# output = crew.kickoff()
-# print(">>> Raw query:\n", generate_task.output.raw_output) # get raw output of 1 task
-# print("\n>>> Query and Explaination:\n", output)
