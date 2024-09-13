@@ -1,4 +1,4 @@
-schema = """
+SCHEMA = """
 
 DROP DATABASE ManageTest;
 CREATE DATABASE ManageTest;
