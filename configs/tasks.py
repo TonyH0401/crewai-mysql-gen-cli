@@ -6,62 +6,44 @@ class MySQLGenerateTasks:
     def mysql_generate_task(self, agent, db_specs, user_specs):
         return Task(
             description=dedent(f"""\
-                Analyze the given user specifications: {user_specs}.
-                Focus on identifying unique features and the overall narrative presented.
-                
-                Generate a poem based on the analyzed user specifications.
-                Your poem must be elegant, informative and exciting to the reader.
-                
-                The final result is ONLY the poem, no yapping."""),
+                Given the information about the database and user specifications, analyze the database and user specifications,
+                focus on identifying features and information of the database schemas and user specifications and the overall
+                narrative presented:
+                    - Database schemas information: {db_specs}.
+                    - User specifications: {user_specs}.
+
+                Generate MySQL query based on the user specifications and information from the database schemas while 
+                strictly adhering to the following rules. No yapping:
+                    - DO:
+                        - ALWAYS look at the tables and tables' properties in the database schemas to see what you can query,
+                        use ONLY the column names you can see existing in the table schemas, use ONLY the column names needed
+                        to asnwer the user specifications.
+                        - Pay attention to which columns is in which tables, the name in the generated query MUST be the same
+                        as the names of the tables and columns in the database schemas.
+                        - Order the results to return the most informative data in the database, ALWAYS use the primary key(s)
+                        in 'SELECT' query,
+                        - Unless the user specifies in the question which specific columns to obtain, display for at 
+                        most 5 significant columns ONLY.
+                        - Use function to get the current date, if the question involves "today".
+                        - ALWAYS use 'JOIN' to join multiple tables.
+                        - When 'GROUP BY', check if there are enough essential columns.
+                        - ALWAYS use 'LIMIT' to limit to 10 rows.
+                    DO NOT skip this step.
+                    - DO NOT:
+                        - Change the table and column names.
+                        - Create query for tables and columns that do not exist.
+                        - Use MySQL subquery.
+                        - Use 'SELECT *', 'TOP 1'.
+                    DO NOT skip this step.
+
+                The final result is a MySQL code block ONLY. No yapping."""),
             expected_output=dedent("""\
-                Display the poem based on the user specifications.
-                If there aren't any specifications, display the poem in paragraphs with spaces between."""),
+                An syntactically correct and optimal MySQL query"""),
             agent=agent
         )
 
 
-
 # # Define task
-# generate_task = Task(
-#     description=f"""
-#             Schema: {schema}.
-#             userQuestion: {question}.
-#             Generate an SQL query based on the userQuestion and pastResult while strictly adhering to the following rules:
-
-#             DO:
-#             - Use the exact name of tables and properties, they MUST be exactly the same in the query as in the schema.
-#             - ALWAYS look at the tables and tables' properties in the database schema to see what you can query.
-#             - Use only the column names you can see existing in the tables.
-#             - Pay attention to which column is in which table.
-#             - Naming table must be unique.
-#             - ALWAYS use 'LIMIT' function to limit the out to 20 rows.
-#             - Use function to get the current date, if the question involves "today".
-#             - If there are tables need to be joined, you always use 'JOIN' function to join tables.
-#             - Query only the columns that are needed to answer the user question.
-#             - Unless the user specifies in the question specific columns to obtain, display for at most 5 significant columns.
-#             - The order of the results to return the most informative data in the database. The schema's primary key(s) must always be used in SELECT query.
-#             - When 'GROUP BY', specifically check if enough essential columns
-#             - Return SQL query ONLY.
-#             Do NOT skip this step.
-
-#             Do NOT:
-#             - Query for columns or properties that do not exist.
-#             - Make or generate any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
-#             - Use SQL subquery.
-#             - Change the table's name.
-#             - Use columns that not belong to table
-#             - Use SELECT *.
-#             - Use 'TOP 1'.
-#             - Duplicate table names.
-#             - Return any values beside the SQL query.
-#             Do NOT skip this step.
-#         """,
-#     agent=generate_agent,
-#     expected_output="""
-#             An optimal and syntactically correct SQL query to retrieve relevant information from the database schema based on the content of the user input.
-#             Only the SQL query is returned. Nothing other than the SQL query is returned.
-#         """
-# )
 # extract_task = Task(
 #     description="""
 #             Strictly adhering to the following rules:
