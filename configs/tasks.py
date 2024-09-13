@@ -36,9 +36,9 @@ class MySQLGenerateTasks:
                         - Use 'SELECT *', 'TOP 1'.
                     DO NOT skip this step.
 
-                The final result is a MySQL code block ONLY. No yapping."""),
+                The final result is a MySQL query code block ONLY. No yapping."""),
             expected_output=dedent("""\
-                An syntactically correct and optimal MySQL query"""),
+                An syntactically correct and optimal MySQL query inside a markdown code block like this ```sql ```."""),
             agent=agent
         )
 
