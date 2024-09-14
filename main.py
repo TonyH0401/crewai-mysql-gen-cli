@@ -15,31 +15,30 @@ if raw_schemas is None:
 
 # Convert raw schemas to json markdown
 schemas_json_markdown = convert_schemas_to_json_markdown(raw_schemas)
-print(schemas_json_markdown)
 
-# # Define user question, must be precise
-# user_specs = "List popular Electronics products"
+# Define user question, must be precise
+user_specs = "How many employees are there?"
 
-# # Initialize Agents and Tasks
-# agents = MySQLGenerateAgent()
-# tasks = MySQLGenerateTasks()
+# Initialize Agents and Tasks
+agents = MySQLGenerateAgent()
+tasks = MySQLGenerateTasks()
 
-# # Create Agents
-# mysql_generate_agent = agents.mysql_generate_agent()
-# # Create Tasks
-# mysql_generate_task = tasks.mysql_generate_task(
-#     mysql_generate_agent, SCHEMA, user_specs)
+# Create Agents
+mysql_generate_agent = agents.mysql_generate_agent()
+# Create Tasks (important)
+mysql_generate_task = tasks.mysql_generate_task(
+    mysql_generate_agent, schemas_json_markdown, user_specs)
 
-# # Create Crew for MySQL generation
-# mysql_crew = Crew(
-#     agents=[mysql_generate_agent],
-#     tasks=[mysql_generate_task],
-#     verbose=True,
-#     process=Process.sequential
-# )
+# Create Crew for MySQL generation
+mysql_crew = Crew(
+    agents=[mysql_generate_agent],
+    tasks=[mysql_generate_task],
+    verbose=True,
+    process=Process.sequential
+)
 
 if __name__ == "__main__":
     print(">>> Program starts!")
-    # output = mysql_crew.kickoff()
+    output = mysql_crew.kickoff()
     print(">>> Answer:")
-    # print(output)
+    print(output)
