@@ -14,8 +14,8 @@ if raw_schemas is None:
     sys.exit()
 
 # Convert raw schemas to json markdown
-schemas_json = convert_schemas_to_json_markdown(raw_schemas)
-print(schemas_json)
+schemas_json_markdown = convert_schemas_to_json_markdown(raw_schemas)
+print(schemas_json_markdown)
 
 # # Define user question, must be precise
 # user_specs = "List popular Electronics products"
