@@ -36,7 +36,7 @@ def convert_schemas_to_json_markdown(raw_schemas):
         llm=llm,
         # verbose=True,
     )
-    extract_task = Task(
+    json_convert_task = Task(
         description=dedent(f"""\
             Given the information about the database schemas, analyze the database, focus on identifying information of 
             the database schemas:    
@@ -61,7 +61,7 @@ def convert_schemas_to_json_markdown(raw_schemas):
     )
     json_convert_crew = Crew(
         agents=[json_agent],
-        tasks=[extract_task],
+        tasks=[json_convert_task],
         # verbose=True,
         process=Process.sequential
     )
