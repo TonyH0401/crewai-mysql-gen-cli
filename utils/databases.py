@@ -68,5 +68,3 @@ def convert_schemas_to_json_markdown(raw_schemas):
     output = json_convert_crew.kickoff()
     json_markdown = f"""```mysql\n {output} \n```"""
     return json_markdown
-
-# def

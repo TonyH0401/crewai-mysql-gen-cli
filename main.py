@@ -5,7 +5,6 @@ from utils.databases import read_mysql_db, convert_schemas_to_json_markdown
 import sys
 
 # Reading database filepath
-demo = ".zookeeper.sql"
 filepath = "./mysql_db_schemas/employee.sql"
 raw_schemas = read_mysql_db(filepath)
 if raw_schemas is None:
@@ -16,7 +15,8 @@ if raw_schemas is None:
 schemas_json_markdown = convert_schemas_to_json_markdown(raw_schemas)
 
 # Define user question, must be precise
-user_specs = "How many employees are there?"
+# user_specs = "How many employees are there?"
+user_specs = "List the top 15 employees (include the employee's name) with the highest salaries"
 
 # Initialize Agents and Tasks
 agents = MySQLGenerateAgent()
