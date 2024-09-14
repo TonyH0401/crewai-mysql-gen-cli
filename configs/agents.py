@@ -27,6 +27,9 @@ class MySQLGenerateAgent:
             llm=self.llm,
             verbose=True,
         )
+    
+    def mysql_explain_agen(self):
+        return Agent()
 
     # def mysql_extract_agent(llm):
     #     return Agent(
