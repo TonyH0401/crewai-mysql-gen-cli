@@ -1,4 +1,3 @@
-from mysql_db_schema import SCHEMA
 from crewai import Crew, Process
 from configs.agents import MySQLGenerateAgent
 from configs.tasks import MySQLGenerateTasks
