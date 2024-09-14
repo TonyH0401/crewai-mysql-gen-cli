@@ -35,4 +35,3 @@ In the CrewAI docs, these are the sections you need to view:
 
 TO-DO:
 - Add few-shot examples
-- Request the result to be only in query, no code block markdown
