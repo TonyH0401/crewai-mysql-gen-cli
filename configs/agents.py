@@ -27,9 +27,21 @@ class MySQLGenerateAgent:
             llm=self.llm,
             verbose=True,
         )
-    
-    def mysql_explain_agen(self):
-        return Agent()
+
+    def mysql_explain_agent(self):
+        return Agent(
+            role="MySQL Specialist",
+            goal=dedent("""\
+                Analyze the user specifications, database schemas information and MySQL code block. Based on the analyzation,
+                create detail explanation which is clear, easy to understand and precise on the operation process."""),
+            backstory=dedent("""\
+                As a MySQL Specialist, you have extensive knowledge about MySQL, you can explain the process of a MySQL code
+                block process based on the user specifications, database schemas information and a provided MySQL code block.
+                Your explanation is clear, easy to understand and precise."""),
+            allow_delegation=False,
+            llm=self.llm,
+            verbose=True
+        )
 
     # def mysql_extract_agent(llm):
     #     return Agent(

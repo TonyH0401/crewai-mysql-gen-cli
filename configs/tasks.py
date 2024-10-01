@@ -42,6 +42,28 @@ class MySQLGenerateTasks:
             agent=agent
         )
 
+    def mysql_explain_task(self, agent, db_specs, user_specs, context):
+        return Task(
+            description=dedent(f"""\
+                Given the information about the provided database schemas, user specifications and MySQL code block;
+                analyze the provided database schemas information, user specifications and MySQL code block:
+                    - Database schemas information: {db_specs}.
+                    - User specifications: {user_specs}.
+
+                Based on the analysis of the database schemas, user specifications and MySQL code block, generate
+                an explanation about the MySQL code block (process). No yapping.
+
+                The final result consists of two parts:
+                    - A MySQL code block contained inside a ```sql ``` markdown.
+                    - A paragraph contains the explanation."""),
+            expected_output=dedent("""\
+                The final result consists of two parts:
+                    - A MySQL code block contained inside a ```sql ``` markdown.
+                    - A paragraph contains the explanation."""),
+            agent=agent,
+            context=[context]
+        )
+
 
 # # Define task
 # extract_task = Task(
