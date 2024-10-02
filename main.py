@@ -53,7 +53,7 @@ query_suggest_crew = Crew(
 if __name__ == "__main__":
     print(">>> Question Suggest Program starts!")
     output = query_suggest_crew.kickoff()
-    print(">>> Question Suggest  Answer:")
+    print(">>> Question Suggest Answer:")
     print(output)
     # print(">>> Program 2 starts!")
     # output = mysql_crew.kickoff()
