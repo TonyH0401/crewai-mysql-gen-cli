@@ -3,25 +3,20 @@ from textwrap import dedent
 
 
 class MySQLGenerateTasks:
-    def query_suggest_task(self, agent, db_specs):
+    def sql_question_suggest_task(self, agent, db_specs):
         return Task(
             description=dedent(f"""\
                 Given the information about the database schemas, analyze the database schemas, focus on identifying features 
                 and information of the database schemas and the overall narrative presented:
                     - Database schemas information: {db_specs}.
 
-                Generate SQL query questions based on the information from the database schemas while 
-                strictly adhering to the following rules. No yapping:
-                    - DO:
-                        - Generate questions which perform `SELECT` operations ONLY.
-                    DO NOT skip this step.
-                    - DO NOT:
-                        - Generate questions that will perform DML operations (ex: INSERT, UPDATE, DELETE)
-                    DO NOT skip this step.
+                Generate 4 meaningful and informative questions ONLY based on the information from the database schemas.
+                You DO NOT generate questions that perform DML operations such as `INSERT`, `UPDATE` and `DELETE`.
+                No yapping. DO NOT skip this step.
 
-                The final result is a list of 3 questions. No yapping."""),
+                The final result is an array with 4 recommended questions ONLY. No yapping."""),
             expected_output=dedent("""\
-                The final result is a list of 3 questions. No yapping."""),
+                An array with 4 recommended questions ONLY and there will be no explanation or comment."""),
             agent=agent
         )
 
@@ -62,7 +57,7 @@ class MySQLGenerateTasks:
                 MySQL code block. No yapping."""),
             expected_output=dedent("""\
                 An syntactically correct and optimal MySQL query inside a markdown code block like this ```sql ```.
-                There will be no explanation or cmment on the MySQL code block."""),
+                There will be no explanation or comment on the MySQL code block."""),
             agent=agent
         )
 

@@ -13,16 +13,17 @@ class MySQLGenerateAgent:
         # self.llm = ChatGroq(api_key=GROQ_API, model="llama3-70b-8192")
         # self.llm = ChatGroq(api_key=GROQ_API, model="gemma2-9b-it")
 
-    def query_suggest_agent(self):
+    def sql_question_suggest_agent(self):
         return Agent(
-            role="SQL Query Suggestor",
+            role="SQL Question Suggestor",
             goal=dedent("""\
-                Analyze the provided database schemas information, suggest some SQL query questions
-                which the user might want to ask based on the analyzed information while
-                adhering to strict guidelines."""),
+                Analyze the provided database schemas information, suggest SQL questions which the user might want to ask
+                based on the analyzed information while adhering to strict guidelines."""),
             backstory=dedent("""\
-                As an SQL Query Suggestor, you suggest query questions which the user might want to ask based on
-                the provided database schemas."""),
+                You are an SQL Expert.
+                You have the responsibility of analyzing the provided database schemas for information and suggesting
+                questions to query for the SQL database schemas.
+                Ensure that the suggested questions are precise and related to the provided database schemas."""),
             allow_delegation=False,
             llm=self.llm,
             verbose=True,
