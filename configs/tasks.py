@@ -3,6 +3,28 @@ from textwrap import dedent
 
 
 class MySQLGenerateTasks:
+    def query_suggest_task(self, agent, db_specs):
+        return Task(
+            description=dedent(f"""\
+                Given the information about the database schemas, analyze the database schemas, focus on identifying features 
+                and information of the database schemas and the overall narrative presented:
+                    - Database schemas information: {db_specs}.
+
+                Generate SQL query questions based on the information from the database schemas while 
+                strictly adhering to the following rules. No yapping:
+                    - DO:
+                        - Generate questions which perform `SELECT` operations ONLY.
+                    DO NOT skip this step.
+                    - DO NOT:
+                        - Generate questions that will perform DML operations (ex: INSERT, UPDATE, DELETE)
+                    DO NOT skip this step.
+
+                The final result is a list of 3 questions. No yapping."""),
+            expected_output=dedent("""\
+                The final result is a list of 3 questions. No yapping."""),
+            agent=agent
+        )
+
     def mysql_generate_task(self, agent, db_specs, user_specs):
         return Task(
             description=dedent(f"""\

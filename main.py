@@ -25,11 +25,14 @@ tasks = MySQLGenerateTasks()
 # Create Agents
 mysql_generate_agent = agents.mysql_generate_agent()
 mysql_explain_agent = agents.mysql_explain_agent()
+query_suggest_agent = agents.query_suggest_agent()
 # Create Tasks (important)
 mysql_generate_task = tasks.mysql_generate_task(
     mysql_generate_agent, schemas_json_markdown, user_specs)
 mysql_explain_task = tasks.mysql_explain_task(
     mysql_explain_agent, schemas_json_markdown, user_specs, mysql_generate_task)
+query_suggest_task = tasks.query_suggest_task(
+    query_suggest_agent, schemas_json_markdown)
 
 # Create Crew for MySQL generation
 mysql_crew = Crew(
@@ -39,10 +42,22 @@ mysql_crew = Crew(
     process=Process.sequential
 )
 
+# Create Crew for Query questions suggestion
+query_suggest_crew = Crew(
+    agents=[query_suggest_agent],
+    tasks=[query_suggest_task],
+    verbose=True,
+    process=Process.sequential
+)
+
 if __name__ == "__main__":
-    print(">>> Program starts!")
-    output = mysql_crew.kickoff()
+    print(">>> Program 1 starts!")
+    output = query_suggest_crew.kickoff()
     print(">>> Answer:")
     print(output)
-    print(">>> MySQL code block only:")
-    print(mysql_generate_task.output.raw_output)
+    # print(">>> Program 2 starts!")
+    # output = mysql_crew.kickoff()
+    # print(">>> Answer:")
+    # print(output)
+    # print(">>> MySQL code block only:")
+    # print(mysql_generate_task.output.raw_output)
