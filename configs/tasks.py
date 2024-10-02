@@ -56,12 +56,12 @@ class MySQLGenerateTasks:
                 an explanation about the MySQL code block (process). No yapping.
 
                 The final result consists of two parts:
-                    - A MySQL code block contained inside a ```sql ``` markdown.
-                    - A paragraph contains the explanation."""),
+                    - **MySQL code block**: A MySQL code block contained inside a ```sql ``` markdown.
+                    - **Explain**: A paragraph contains the explanation."""),
             expected_output=dedent("""\
                 The final result consists of two parts:
-                    - A MySQL code block contained inside a ```sql ``` markdown.
-                    - A paragraph contains the explanation."""),
+                    - **MySQL code block**: A MySQL code block contained inside a ```sql ``` markdown.
+                    - **Explain**: A paragraph contains the explanation."""),
             agent=agent,
             context=list(context)
         )
