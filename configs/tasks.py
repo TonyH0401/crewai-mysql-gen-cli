@@ -42,7 +42,7 @@ class MySQLGenerateTasks:
             agent=agent
         )
 
-    def mysql_explain_task(self, agent, db_specs, user_specs, context):
+    def mysql_explain_task(self, agent, db_specs, user_specs, *context):
         return Task(
             description=dedent(f"""\
                 Given the information about the provided database schemas, user specifications and MySQL code block;
@@ -61,7 +61,7 @@ class MySQLGenerateTasks:
                     - A MySQL code block contained inside a ```sql ``` markdown.
                     - A paragraph contains the explanation."""),
             agent=agent,
-            context=[context]
+            context=list(context)
         )
 
 
