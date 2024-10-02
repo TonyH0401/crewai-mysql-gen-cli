@@ -33,7 +33,7 @@ mysql_explain_task = tasks.mysql_explain_task(
 
 # Create Crew for MySQL generation
 mysql_crew = Crew(
-    agents=[mysql_generate_agent],
+    agents=[mysql_generate_agent, mysql_explain_agent],
     tasks=[mysql_generate_task, mysql_explain_task],
     verbose=True,
     process=Process.sequential
@@ -44,5 +44,5 @@ if __name__ == "__main__":
     output = mysql_crew.kickoff()
     print(">>> Answer:")
     print(output)
-    print(">>> ")
+    print(">>> MySQL code block only:")
     print(mysql_generate_task.output.raw_output)
