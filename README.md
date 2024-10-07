@@ -90,16 +90,32 @@ filepath = "./mysql_db_schemas/{your-database-name}.sql"
 
 Order from newest to oldest.
 
-### 07/08/2024
+### 02/10/2024
 
-- Create `mysql_gen_v02`.
-- Change prompts, add MySQL files.
+- Add feature: MySQL explainer
+- Edit feature: MYSQL explainer's prompt clean up
 
-### 06/08/2024
+### 14/09/2024
 
-- Push old prompts, link can be found [here](https://github.com/TonyH0401/langchain-groq-mysql-query-gen-cli/tree/5cfaf064e1bd35802900da10ff3997c22b2af424).
+- Initialize: README documentation
+- Add feature: read database schemas from file
+- Add feature: convert database schemas to JSON format (using hand code)
+- Edit feature: convert database schemas to JSON format using AI
+- Add feature: convert JSON format database schemas to markdown JSON format
+- Add feature: MySQL generation
+- Edit feature: MySQL generation's prompt edit
+- Edit feature: MySQL generation's prompt clean up
 
-CrewAI is built upon LangChain, so CrewAI can use LangChain functions and tools (some of it).
+### 13/09/2024
+
+- Initialize: database utils
+- Testing: `raw` vs `raw_output`
+- Testing: modular design with CrewAI
+- Testing: using `raw_output` with modular design
+
+### 12/09/2024
+
+- CrewAI is built upon LangChain, so CrewAI can use LangChain functions and tools (at least some of it).
 
 This a MySQL Generator using CrewAI and Groq, it is also a CrewAI guide for beginner.
 
@@ -120,6 +136,16 @@ should be used in another task, this could lead to 1 task using multiple tasks f
 In the CrewAI docs, these are the sections you need to view: - Agent - Task - Process - Crew - Tool (maybe)
 How to Guides - Sequential Process Overview > Implementing Sequential Process - Hierarchical Process Overview
 Examples: Look over some example code and you will see some a crew that have multiple task but fewer agent
+
+### 11/09/2024
+
+- Initialize: the 2nd initializattion of the project
+
+### 08/08/2024
+
+- Initialize: the project
+
+DIVIDER
 
 TO-DO:
 
