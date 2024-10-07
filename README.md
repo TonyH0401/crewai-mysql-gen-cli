@@ -1,6 +1,8 @@
 # Optimized MySQL Query Generation with CrewAI and GroqAI on CLI (Version 03)
 
-Welcome to the MySQL Query Generation Project with CrewAI and GroqAI! This project serves as a comprehensive guide, offering testing and implementation insights for efficiently generating MySQL queries using CrewAI and GroqAI. This project is the 3rd version in a series of similar projects.
+Welcome to the MySQL Query Generation Project with CrewAI and GroqAI!
+
+This project serves as a comprehensive guide, offering testing and implementation insights for efficiently generating MySQL queries using CrewAI and GroqAI. This project is the 3rd version in a series of similar projects.
 
 ## Table of Contents
 
@@ -55,14 +57,34 @@ GROQ_API=""
 
 ## Quick Start
 
-There are 2 different folders representing 2 different implementations, each of the folder contains a `main.py` file to run its respective project. Run the project using the following command(s).
+The main functions are located in `main.py` and there are databases provided in the repository. Run the project using the following command(s).
 
 ```sh
-# Run main.py in version 01
-python .\mysql_gen_v01\main.py
-# Run main.py in version 02
-python .\mysql_gen_v02\main.py
+python main.py
 ```
+
+Inside `main.py`, there are 2 crews, these are for the 2 main functions of this project, you can comment out the function you don't want to run.
+
+```sh
+print(">>> Question Suggest Program starts!")
+output = query_suggest_crew.kickoff()
+print(">>> Question Suggest Answer:")
+print(output)
+# print(">>> Program 2 starts!")
+# output = mysql_crew.kickoff()
+# print(">>> Answer:")
+# print(output)
+# print(">>> MySQL code block only:")
+# print(mysql_generate_task.output.raw_output)
+```
+
+You can provide your own databases in the `mysql_db_schemas/` directory. You can load them in `main.py` by changing the file path.
+
+```sh
+filepath = "./mysql_db_schemas/{your-database-name}.sql"
+```
+
+---
 
 ## Development Documentation
 
@@ -76,8 +98,6 @@ Order from newest to oldest.
 ### 06/08/2024
 
 - Push old prompts, link can be found [here](https://github.com/TonyH0401/langchain-groq-mysql-query-gen-cli/tree/5cfaf064e1bd35802900da10ff3997c22b2af424).
-
----
 
 CrewAI is built upon LangChain, so CrewAI can use LangChain functions and tools (some of it).
 
