@@ -13,6 +13,7 @@ This project serves as a comprehensive guide, offering testing and implementatio
   - [Environment Variable](#Environment-Variable)
 - [Quick Start](#Quick-Start)
 - [Development Documentation](#development-documentation)
+- [To Do](#to-do)
 
 ## Introduction
 
@@ -148,8 +149,8 @@ Order from newest to oldest.
 
 - Initialize: the project
 
-DIVIDER
+--
 
-TO-DO:
+## To Do:
 
 - Add few-shot examples
