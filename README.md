@@ -89,7 +89,7 @@ filepath = "./mysql_db_schemas/{your-database-name}.sql"
 
 ## Development Documentation
 
-Order from newest to oldest.
+*Order from newest to oldest.*
 
 ### 02/10/2024
 
