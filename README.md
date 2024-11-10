@@ -145,6 +145,11 @@ filepath = "./mysql_db_schemas/{your-database-name}.sql"
 
 - Initialize: the 2nd initializattion of the project
 
+- Rebuild the project based on new layouts:
+
+	- https://github.com/crewAIInc/crewAI-examples/tree/main/instagram_post.
+	
+	- https://github.com/keysKuo/llm-sql-optimization.
 ### 08/08/2024
 
 - Initialize: the project
